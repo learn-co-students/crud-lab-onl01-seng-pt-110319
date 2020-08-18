@@ -16,7 +16,12 @@ class Restaurants extends Component {
     return(
     <div>
       <ul>
-        {rList}
+        {/* {rList} */}
+        {this.props.restaurants.map(restaurant => <Restaurant 
+        restaurant={restaurant} 
+        deleteRestaurant={deleteRestaurant}
+        />)
+        }
       </ul>
     </div>
     );

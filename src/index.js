@@ -15,3 +15,4 @@ ReactDOM.render(
   </Provider>,
 document.getElementById('root')
 )
+//createStore gives us access to hit our actions in our reducer

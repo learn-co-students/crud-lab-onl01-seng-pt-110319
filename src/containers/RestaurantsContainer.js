@@ -18,6 +18,7 @@ class RestaurantsContainer extends Component {
   }
 }
 
+//this here gets state so we can update the form after submit
 const mapStateToProps = state => ({
   restaurants: state.restaurants
 })
