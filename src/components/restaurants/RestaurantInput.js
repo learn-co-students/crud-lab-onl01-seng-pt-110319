@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 
 class RestaurantInput extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { 
-      text: '',
-    }
+  state = {
+    text: ''
 }
 
   handleOnChange(event){
@@ -27,6 +24,7 @@ class RestaurantInput extends Component {
         <form onSubmit={(event) => this.handleOnSubmit(event)}>
           <lable>Restaurant Name</lable>
         <input type="text" 
+        name="text"
         onChange={(event) => this.handleOnChange(event)} 
         value={this.state.text}/>
         <input type="submit" />
@@ -37,3 +35,5 @@ class RestaurantInput extends Component {
 };
 
 export default RestaurantInput;
+
+//name in the input field is there for when you have multiple inputs to be able to access

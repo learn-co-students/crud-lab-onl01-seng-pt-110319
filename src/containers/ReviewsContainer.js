@@ -29,3 +29,6 @@ const mapDispatchToProps = dispatch => ({
   deleteReview: id => dispatch({type: 'DELETE_REVIEW', id})
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewsContainer)
+
+
+//connect and the two maps above the redux part
