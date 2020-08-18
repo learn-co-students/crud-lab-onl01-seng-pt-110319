@@ -17,11 +17,12 @@ class Restaurants extends Component {
     <div>
       <ul>
         {/* {rList} */}
-        {this.props.restaurants.map(restaurant => <Restaurant 
+        {this.props.restaurants.map(restaurant => 
+        <Restaurant 
         restaurant={restaurant} 
         deleteRestaurant={deleteRestaurant}
-        />)
-        }
+        />
+        )}
       </ul>
     </div>
     );
