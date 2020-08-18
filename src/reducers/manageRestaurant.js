@@ -11,11 +11,10 @@ export default function manageRestaurants(state = {
                 const restaurant = { 
                     id: cuidFn(),
                     text: action.text}
-                    return { restaurants: state.restaurants.concat(restaurant)}
-                // return {
-                //     ...state,
-                //     restaurants: [...state.restaurants, restaurant]
-                // }
+                return {
+                    ...state,
+                    restaurants: [...state.restaurants, restaurant]
+                }
             case 'DELETE_RESTAURANT':
                     const restaurants = state.restaurants.filter(restaurant => restaurant.id !== action.id)
                     return {...state, restaurants}

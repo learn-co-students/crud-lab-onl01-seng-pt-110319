@@ -9,13 +9,14 @@ class Restaurant extends Component {
 
   render() {
     const { restaurant } = this.props;
-
+      console.log('hey', this.props)
     return (
       <div>
         <li>
           {restaurant.text}
           <button onClick={() => this.handleOnClick()}> X </button>
           <ReviewsContainer restaurant={restaurant}/>
+          {/* <ReviewInput /> */}
         </li>
       </div>
     );
