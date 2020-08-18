@@ -14,11 +14,11 @@ class Restaurants extends Component {
       )
     })
     return(
-      // <div>
+    <div>
       <ul>
         {rList}
       </ul>
-      // </div>
+    </div>
     );
   }
 };
