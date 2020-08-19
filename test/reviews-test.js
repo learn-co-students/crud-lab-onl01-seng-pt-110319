@@ -119,11 +119,16 @@ describe('Reviews Component', () => {
     const store = createStore(manageRestaurant);
     store.dispatch({type: 'ADD_RESTAURANT', text: 'LoKi'})
     let restaurantId = store.getState().restaurants[0].id
+    console.log("before dispatch inside test", restaurantId)
     store.dispatch({ type: 'ADD_REVIEW', review: { text: "Was great", restaurantId } })
+    console.log("after first dispatch inside test", restaurantId)
+    console.log("store after first dispatch", store.getState())
+    console.log("store length", store.getState().length)
     store.dispatch({ type: 'ADD_REVIEW', review: { text: "Was not great", restaurantId } })
+    console.log("after 2nd dispatch inside test", restaurantId)
     const wrapper = mount(<Provider store={store}><App /></Provider>);
 
-
+    console.log("store", store.getState())
     expect(wrapper.find(Review)).to.have.length(2);
   });
 
