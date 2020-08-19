@@ -8,6 +8,7 @@ class Reviews extends Component {
     const rList = associatedReviews.map((review, index) => {
       return <Review key={index} review={review} deleteReview={deleteReview} />
     })
+    console.log(reviews)
     return (
       <div>
       <ul>
