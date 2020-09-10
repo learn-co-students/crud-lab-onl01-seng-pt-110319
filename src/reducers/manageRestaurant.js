@@ -1,36 +1,38 @@
-
 import cuid from 'cuid';
 export const cuidFn = cuid;
 
-const initialState = {
-    restaurants: [
-        {
-            id: '0',
-            text: "tester"
-        }
-    ]
-}
-export default function manageRestaurants(state = initialState, action) {
-    let idx;
-    switch (action.type){
-        case "ADD_REST":
+export default function manageRestaurants(state = {
+    restaurants: [],
+    reviews: [],
+}, action) {
+    switch (action.type) {
+
+        case 'ADD_RESTAURANT':
+
+            const restaurant = { text: action.text, id: cuidFn() };
             return {
                 ...state,
-                restaurants: [...state.restaurants, action.restaurant]
+                restaurants: [...state.restaurants, restaurant]
             }
-        case "REMOVE_REST":
-            idx = state.restaurants.findIndex(restaurant => restaurant.id === action.id)
-            return{
+
+        case 'DELETE_RESTAURANT':
+            const restaurants = state.restaurants.filter(restaurant => restaurant.id !== action.id);
+            return { ...state, restaurants }
+
+        case 'ADD_REVIEW':
+
+            const review = { text: action.review.text, restaurantId: action.review.restaurantId, id: cuidFn() };
+            return {
                 ...state,
-                restaurants: [...state.restaurants.slice(0,idx),...state.restaurants.slice(idx +1)]
-            }            
-        case "UPDATE_REST":
-            idx = state.restaurants.findIndex(restaurant => restaurant.id === action.id)
-            return{
-                ...state,
-                restaurants: [...state.restaurants.slice(0,idx),action.restaurant,...state.restaurants.slice(idx +1)]
+                reviews: [...state.reviews, review]
             }
-            default:
-                return state
+
+        case 'DELETE_REVIEW':
+            const reviews = state.reviews.filter(review => review.id !== action.id);
+            return { ...state, reviews }
+
+        default:
+            return state;
+
     }
-}
+};

@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import Restaurant from './Restaurant';
-import PropTypes from 'prop-types';
+import Restaurant from './Restaurant'
 
 class Restaurants extends Component {
   render() {
+    const {restaurants, deleteRestaurant} = this.props
+    const restaurantLists = restaurants.map(restaurant => {
+      return(
+      <Restaurant key={restaurant.id} restaurant={restaurant} deleteRestaurant={deleteRestaurant}/>
+      )
+    })
     return(
       <ul>
-        {this.props.restaurants.map((r) => 
-            <Restaurant removeRest={this.props.removeRest} restaurant={r}/>)
-        }
+        {restaurantLists}
       </ul>
     );
   }
 };
-Restaurants.propType={
-  restaurants: PropTypes.array
-}
 
 export default Restaurants;

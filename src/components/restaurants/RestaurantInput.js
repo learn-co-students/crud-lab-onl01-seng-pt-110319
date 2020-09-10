@@ -1,38 +1,35 @@
 import React, { Component } from 'react';
-import cuid from 'cuid';
 
 class RestaurantInput extends Component {
-  constructor(props){
-    super(props)
-    this.state={
-      text:''
-    }
+  state = {
+    text: ""
   }
-  handleChange = (event) => {
+
+  handleChange = e => {
     this.setState({
-      text: event.target.value
+      text: e.target.value
     })
   }
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.restaurant = {
-      id: cuid(),
-      text: this.state.text
-    }
-    this.props.addRest(this.restaurant)
+
+  handlSubmit = e => {
+    e.preventDefault()
+    this.props.addRestaurant(this.state.text)
+    this.setState({
+      text: ""
+    })
+
   }
-  render(){
+
+  render() {
     return (
       <div>
-        <form onSubmit={event=> this.handleSubmit(event)}>
-        <input 
-        type="text"
-        onChange={event=> this.handleChange(event)}
-          value={this.state.text}/>
-          <input type="submit" />
+        <form onSubmit={this.handlSubmit}>
+          <input type="text" value={this.state.text} onChange={this.handleChange}/>
+          <input type="submit"/>
         </form>
       </div>
     );
   }
 };
-export default RestaurantInput
+
+export default RestaurantInput;
